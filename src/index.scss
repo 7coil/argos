@@ -1,0 +1,225 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.argos {
+  .argos-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+    width: 800px;
+    height: 600px;
+    box-sizing: border-box;
+    background-color: #0487ff;
+    font-family: Arial;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+
+    padding: 0.5em;
+    gap: 0.5em;
+
+    .argos-infobar {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 5px;
+
+      .argos-infobar-text,
+      .argos-infobar-time {
+        background-color: #cceeff;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .argos-infobar-text {
+        font-size: 2em;
+      }
+
+      .argos-infobar-time {
+        font-family: "Arial Black";
+        font-style: italic;
+        font-size: 2em;
+        text-align: center;
+        font-weight: bolder;
+      }
+    }
+
+    .argos-scrollbar-container {
+      display: grid;
+      grid-template-columns: 6fr 1fr;
+      gap: 0.5em;
+
+      .argos-scrollbar-ready {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        .argos-scrollbar-ready-numbers {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          gap: 0.5em;
+        }
+
+        .argos-scrollbar-ready-message {
+          display: flex;
+          justify-content: center;
+
+          .argos-scrollbar-ready-message-text-container,
+          .argos-scrollbar-ready-message-arrow-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .argos-scrollbar-ready-message-text-container {
+            background-color: #32fecc;
+            font-size: 2em;
+            flex-grow: 1;
+          }
+
+          .argos-scrollbar-ready-message-arrow-container {
+            color: #32fecc;
+            font-size: 2em;
+            overflow: hidden;
+            width: 3em;
+            max-height: 2em;
+          }
+        }
+      }
+      .argos-scrollbar-ready-box {
+        background-color: #cceeff;
+        display: flex;
+        flex-direction: column;
+
+        .argos-scrollbar-ready-box-header {
+          background-color: transparent;
+          text-align: center;
+          padding: 0.3em 0;
+          font-size: 1.2em;
+        }
+
+        .argos-scrollbar-ready-box-number {
+          background-color: white;
+          flex-grow: 1;
+        }
+      }
+    }
+
+    .argos-loading-container {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1em;
+
+      .argos-loading-column {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+    }
+  }
+
+  .argos-scrollbar-ready-message {
+    display: flex;
+    justify-content: center;
+
+    .argos-scrollbar-ready-message-text-container,
+    .argos-scrollbar-ready-message-arrow-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .argos-scrollbar-ready-message-text-container {
+      background-color: #ffe7ed;
+      font-size: 2em;
+      flex-grow: 1;
+    }
+
+    .argos-scrollbar-ready-message-arrow-container {
+      color: #ffe7ed;
+      font-size: 2em;
+      overflow: hidden;
+      width: 3em;
+      max-height: 2em;
+    }
+  }
+}
+
+.argos-cell {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  box-sizing: border-box;
+  border-width: 0.2em;
+  border-style: outset;
+
+  &.ready {
+    background-color: #32fecc;
+    border-color: #58ebc6;
+  }
+
+  &.processing {
+    background-color: #fdcfdc;
+    border-color: #ffe7ed;
+  }
+
+  &.argos-cell-empty {
+    background-color: #cceeff;
+    border-color: #e5f5fd;
+  }
+
+  &::after {
+    // Filler number to make box "number" sized
+    content: "999";
+    visibility: hidden;
+    width: 0;
+  }
+}
+
+.argos-column {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.argos-messagebar {
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+
+  .argos-messagebar-arrow,
+  .argos-messagebar-message {
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .argos-messagebar-arrow {
+    overflow: hidden;
+    width: 3em;
+    max-height: 2em;
+  }
+
+  &.processing {
+    .argos-messagebar-arrow {
+      fill: #fdcfdc;
+    }
+    .argos-messagebar-message {
+      background-color: #fdcfdc;
+    }
+  }
+
+  &.ready {
+    .argos-messagebar-arrow {
+      fill: #32fecc;
+    }
+    .argos-messagebar-message {
+      background-color: #32fecc;
+    }
+  }
+}
