@@ -1,0 +1,18 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "inputs": ["src/**/*"]
+    },
+    "demo": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*"]
+    },
+    "nodecg": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*", "webpack.config.json"]
+    }
+  }
+}

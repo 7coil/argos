@@ -1,7 +1,8 @@
-import { Argos } from "./components/Argos";
+import { Argos } from "react-argos";
+import "react-argos/dist/main.css";
+
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.scss";
 
 ReactDOM.render(
   <Argos

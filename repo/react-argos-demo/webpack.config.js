@@ -22,9 +22,18 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.scss$/, use: ["style-loader", "css-loader", "sass-loader"] },
-      { test: /\.tsx?$/, loader: "babel-loader" },
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+        exclude: /node_modules/,
+      },
+      { test: /\.[jt]sx?$/, loader: "babel-loader", exclude: /node_modules/ },
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader",
+        exclude: /node_modules/,
+      },
     ],
   },
   plugins: [
