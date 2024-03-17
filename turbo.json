@@ -9,10 +9,6 @@
     "demo": {
       "dependsOn": ["^build"],
       "inputs": ["src/**/*"]
-    },
-    "nodecg": {
-      "dependsOn": ["^build"],
-      "inputs": ["src/**/*", "webpack.config.json"]
     }
   }
 }

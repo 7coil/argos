@@ -77,6 +77,7 @@ const useArgos = ({
 }: ArgosProps): {
   readyRow: (number | undefined)[];
   readyColumns: (number | undefined)[][];
+  lastNumber: number | undefined;
 } => {
   const READY_LENGTH = 7;
   const PROCESSING_COLUMNS = 7;
@@ -99,6 +100,10 @@ const useArgos = ({
   useEffect(() => {
     const interval = setInterval(() => {
       setOffset((x) => (x + 1) % readyBarLength);
+
+      for (const key of positionMap.keys()) {
+        if (!processing.includes(key)) positionMap.delete(key);
+      }
 
       for (const n of processing) {
         const positionArray = getPositionArray();
@@ -153,7 +158,7 @@ const useArgos = ({
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [ready, processing]);
 
   return useMemo(() => {
     const readyRow: (number | undefined)[] = [];
@@ -177,13 +182,13 @@ const useArgos = ({
     return {
       readyRow,
       readyColumns,
-      getPositionArray,
+      lastNumber: ready[ready.length - 1],
     };
   }, [offset, readyBarLength]);
 };
 
 const Argos: React.FC<ArgosProps> = ({ data }: ArgosProps) => {
-  const { readyRow, readyColumns } = useArgos({ data });
+  const { readyRow, readyColumns, lastNumber } = useArgos({ data });
   const { hour, minute, day, colonVisible } = useTime();
   const { scaling } = useScaling();
 
@@ -223,7 +228,7 @@ const Argos: React.FC<ArgosProps> = ({ data }: ArgosProps) => {
           </div>
           <div className="argos-scrollbar-ready-box">
             <div className="argos-scrollbar-ready-box-header">Last #</div>
-            <div className="argos-scrollbar-ready-box-number"></div>
+            <div className="argos-scrollbar-ready-box-number">{lastNumber}</div>
           </div>
         </div>
         <div className="argos-loading-container">

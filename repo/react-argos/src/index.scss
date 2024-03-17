@@ -107,6 +107,10 @@ body {
         .argos-scrollbar-ready-box-number {
           background-color: white;
           flex-grow: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 3.5em;
         }
       }
     }

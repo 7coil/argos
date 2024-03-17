@@ -21,7 +21,6 @@
   },
   "workspaces": [
     "./repo/react-argos",
-    "./repo/react-argos-demo",
-    "./repo/react-argos-nodecg"
+    "./repo/react-argos-demo"
   ]
 }
